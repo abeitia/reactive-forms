@@ -1,0 +1,49 @@
+<div>
+<h1>Test Reactive Forms App</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="checkLogin()">
+
+      <label for="email">Email:</label>
+      <input type="email" [formControl]="email"/>
+      <!-- <div *ngIf="email.errors">
+        <span style="color:red" *ngIf="email.invalid && email?.errors?.['required']" >
+          Email is required
+      </span>
+      </div> -->
+
+      <label for="password">Password:</label>
+      <input type="password" [formControl]="password"/>
+      <!-- <div *ngIf="password.errors">
+        <span style="color:red" *ngIf="password.invalid && password?.errors?.['required']" >
+          Password is required
+      </span>
+      </div> -->
+
+
+
+      <button type="submit" [disabled]="!loginForm.valid">
+      Login
+      </button>
+
+
+
+  </form>
+</div>
+
+<div *ngIf="email.errors">
+  <span style="color:red" *ngIf="email.errors && (email.touched || email.dirty)">
+    <span  *ngIf="email?.errors?.['required']" >
+      Email is required
+  </span>
+  </span>
+
+</div>
+
+<div *ngIf="password.errors">
+  <span style="color:red" *ngIf="password.errors && (password.touched || password.dirty)">
+    <span  *ngIf="password?.errors?.['required']" >
+      Password is required
+  </span>
+  <span  *ngIf="password.errors['minlength']" >
+    Password must be greater than 8 characters
+</span>
+  </span>
