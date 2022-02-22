@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { checkInvalidKeyWord } from 'src/app/Directives/check-reserved-keyword.validator';
 import { UserDTO } from 'src/app/Models/user.dto';
 
 @Component({
@@ -16,11 +17,15 @@ export class LoginComponent {
   user: UserDTO;
   email: FormControl;
   password: FormControl;
+
   loginForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
-    this.user = new UserDTO('', '');
-    this.email = new FormControl(this.user.email, Validators.required);
+    this.user = new UserDTO('', '', '', '', '', '', new Date());
+    this.email = new FormControl(this.user.email, [
+      Validators.required,
+      checkInvalidKeyWord(/info@uoc.edu/),
+    ]);
     this.password = new FormControl(this.user.password, [
       Validators.required,
       Validators.minLength(8),
