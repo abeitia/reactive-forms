@@ -29,6 +29,7 @@ export class SignInComponent {
     this.email = new FormControl(this.user.email, [
       Validators.required,
       checkInvalidKeyWord(/info@uoc.edu/),
+      Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
     ]);
     this.password = new FormControl(this.user.password, [
       Validators.required,

@@ -35,5 +35,100 @@
 
 
 
+
   </form>
 </div>
+
+<div *ngIf="email.errors">
+  <span style="color:red" *ngIf="email.errors && (email.touched || email.dirty)">
+    <span  *ngIf="email?.errors?.['required']" >
+      Email is required
+  </span>
+
+  <span  *ngIf="email?.errors?.['invalidKeyWord']" >
+    Email info@uoc.edu is reserved for the system admin.
+</span>
+
+<span  *ngIf="email?.errors?.['pattern']" >
+  Email is not in a valid format.
+</span>
+  </span>
+
+
+
+
+</div>
+
+<div *ngIf="password.errors">
+  <span style="color:red" *ngIf="password.errors && (password.touched || password.dirty)">
+    <span  *ngIf="password?.errors?.['required']" >
+      Password is required
+  </span>
+  <span  *ngIf="password.errors['minlength']" >
+    Password must be greater than 8 characters
+</span>
+  </span>
+</div>
+
+<div *ngIf="name.errors">
+    <span style="color:red" *ngIf="name.errors && (name.touched || name.dirty)">
+      <span  *ngIf="name?.errors?.['required']" >
+        Name is required
+    </span>
+    <span  *ngIf="name.errors['minlength']" >
+      Name must be greater than 5 characters
+  </span>
+  <span  *ngIf="name.errors['maxlength']" >
+    Name must be less than 25 characters
+</span>
+    </span>
+</div>
+
+<div *ngIf="surname1.errors">
+      <span style="color:red" *ngIf="surname1.errors && (surname1.touched || surname1.dirty)">
+        <span  *ngIf="surname1?.errors?.['required']" >
+          Surname1 is required
+      </span>
+      <span  *ngIf="surname1.errors['minlength']" >
+        Surname1 must be greater than 5 characters
+    </span>
+    <span  *ngIf="surname1.errors['maxlength']" >
+      Surname1 must be less than 25 characters
+  </span>
+      </span>
+</div>
+
+<div *ngIf="surname2.errors">
+        <span style="color:red" *ngIf="surname2.errors && (surname2.touched || surname2.dirty)">
+
+        <span  *ngIf="surname2.errors['minlength']" >
+          Surname2 must be greater than 5 characters
+      </span>
+      <span  *ngIf="surname2.errors['maxlength']" >
+        Surname2 must be less than 25 characters
+    </span>
+        </span>
+</div>
+
+<div *ngIf="alias.errors">
+  <span style="color:red" *ngIf="alias.errors && (alias.touched || alias.dirty)">
+    <span  *ngIf="alias?.errors?.['required']" >
+      Alias is required
+  </span>
+  <span  *ngIf="alias.errors['minlength']" >
+    Alias must be greater than 5 characters
+</span>
+<span  *ngIf="alias.errors['maxlength']" >
+  Alias must be less than 25 characters
+</span>
+  </span>
+</div>
+
+<div *ngIf="birthdate.errors">
+  <span style="color:red" *ngIf="birthdate.errors && (birthdate.touched || birthdate.dirty)">
+    <span  *ngIf="birthdate?.errors?.['required']" >
+      Birthdate is required
+    </span>
+  </span>
+</div>
+
