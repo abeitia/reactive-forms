@@ -21,6 +21,7 @@ export class SignInComponent {
   surname1: FormControl;
   surname2: FormControl;
   alias: FormControl;
+  birthdate: FormControl;
   registerForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
@@ -57,6 +58,10 @@ export class SignInComponent {
       Validators.maxLength(25),
     ]);
 
+    this.birthdate = new FormControl(this.user.birthDate, [
+      Validators.required,
+    ]);
+
     this.registerForm = this.formBuilder.group({
       email: this.email,
       password: this.password,
@@ -64,17 +69,27 @@ export class SignInComponent {
       surname1: this.surname1,
       surname2: this.surname2,
       alias: this.alias,
+      birthdate: this.birthdate,
     });
   }
 
   joinNow(): void {
+    console.log('User entity');
+
     this.user.email = this.email.value;
     this.user.password = this.password.value;
-    console.log(
-      'User email --> ' +
-        this.user.email +
-        ' User password --> ' +
-        this.user.password
-    );
+    this.user.name = this.name.value;
+    this.user.surname1 = this.surname1.value;
+    this.user.surname2 = this.surname2.value;
+    this.user.alias = this.alias.value;
+    this.user.birthDate = this.birthdate.value;
+
+    console.log('Name: ' + this.user.name);
+    console.log('Surname1: ' + this.user.surname1);
+    console.log('Surname2: ' + this.user.surname2);
+    console.log('Alias: ' + this.user.alias);
+    console.log('BirthDate: ' + this.user.birthDate);
+    console.log('Email: ' + this.user.email);
+    console.log('Password: ' + this.user.password);
   }
 }
